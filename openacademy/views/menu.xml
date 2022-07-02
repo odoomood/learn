@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<odoo>
+    <act_window id="action_list_courses"
+      name="Courses"
+      res_model="openacademy.course"
+      view_mode="tree,form" />
+
+    <act_window id="action_list_sessions"
+      name="Sessions"
+      res_model="openacademy.session"
+      view_mode="tree,form" />
+
+    <menuitem id="menu_root" name="Open Academy" />
+    <menuitem id="menu_courses" parent="menu_root"
+              name="Courses"
+              sequence="10"
+              action="action_list_courses" />
+    <menuitem id="menu_sessions" parent="menu_root"
+              name="Sessions"
+              sequence="15"
+              action="action_list_sessions" />
+</odoo>

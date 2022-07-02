@@ -1,0 +1,112 @@
+<odoo>
+  <data>
+    <!-- Courses -->
+
+    <record model="ir.ui.view" id="course_list">
+      <field name="name">Course list</field>
+      <field name="model">openacademy.course</field>
+      <field name="priority" eval="16"/>
+      <field name="arch" type="xml">
+        <tree string="Courses">
+          <field name="name"/>
+          <field name="responsible_id"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="course_form">
+      <field name="name">Course form</field>
+      <field name="model">openacademy.course</field>
+      <field name="arch" type="xml">
+        <form string="Open Academy Course">
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only" string="Course Name"/>
+              <h1><field name="name"/></h1>
+            </div>
+            <group colspan="4">
+              <group>
+                <field name="responsible_id"/>
+                <field name="session_ids" widget="many2many_tags"/>
+              </group>
+            </group>
+            <notebook colspan="4">
+              <page string="Description">
+                <field name="description" nolabel="1"/>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="course_search">
+      <field name="name">Course search</field>
+      <field name="model">openacademy.course</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="description"/>
+        </search>
+      </field>
+    </record>
+
+    <!-- Sessions -->
+
+    <record model="ir.ui.view" id="session_list">
+      <field name="name">Session list</field>
+      <field name="model">openacademy.session</field>
+      <field name="priority" eval="20"/>
+      <field name="arch" type="xml">
+        <tree string="Sessions">
+          <field name="name"/>
+          <field name="start_date"/>
+          <field name="duration"/>
+          <field name="seats_count"/>
+          <field name="instructor_id"/>
+          <field name="course_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_form">
+      <field name="name">Session form</field>
+      <field name="model">openacademy.session</field>
+      <field name="arch" type="xml">
+        <form string="Open Academy Session">
+          <sheet>
+            <div class="oe_title">
+              <label for="name" class="oe_edit_only" string="Session Name"/>
+              <h1><field name="name"/></h1>
+            </div>
+            <group col="4">
+              <group colspan="2" col="2">
+                <field name="start_date"/>
+                <field name="duration"/>
+                <field name="seats_count"/>
+                <field name="instructor_id"/>
+                <field name="course_id"/>
+              </group>
+            </group>
+            <group>
+              <field name="attendee_ids"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="search_session">
+      <field name="name">Session search</field>
+      <field name="model">openacademy.session</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="instructor_id"/>
+          <field name="course_id"/>
+        </search>
+      </field>
+    </record>
+  </data>
+</odoo>
