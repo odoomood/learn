@@ -3,12 +3,15 @@
     <act_window id="action_list_courses"
       name="Courses"
       res_model="openacademy.course"
-      view_mode="tree,form" />
+      view_mode="tree,form"
+      context="{'search_default_my_courses': True}"
+    />
 
     <act_window id="action_list_sessions"
       name="Sessions"
       res_model="openacademy.session"
-      view_mode="tree,form" />
+      view_mode="tree,form,calendar,graph,kanban"
+    />
 
     <menuitem id="menu_root" name="Open Academy" />
     <menuitem id="menu_courses" parent="menu_root"
