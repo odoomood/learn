@@ -2,6 +2,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 import logging
+from datetime import timedelta
 
 _logger = logging.getLogger(__name__)
 
@@ -29,6 +30,7 @@ class Session(models.Model):
 
     name = fields.Char('Name')
     start_date = fields.Date('Start date', default=lambda self: fields.Date.context_today(self))
+    end_date = fields.Date('End date', compute='_compute_end_date')
     duration = fields.Integer('Duration')
     seats_total = fields.Integer('Seats total')
     seats_taken = fields.Integer('Taken seats', compute='_compute_seats_taken')
@@ -65,6 +67,14 @@ class Session(models.Model):
         for rec in self:
             if rec.instructor_id and rec.instructor_id not in rec.attendee_ids:
                 raise ValidationError('Instructor must be in attendee list!')
+
+    @api.depends('start_date', 'duration')
+    def _compute_end_date(self):
+        for rec in self:
+            if rec.start_date and rec.duration:
+                rec.end_date = rec.start_date + timedelta(rec.duration)
+            else:
+                rec.end_date = False
 
 
 
