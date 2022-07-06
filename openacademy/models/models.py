@@ -66,5 +66,9 @@ class Session(models.Model):
             if rec.instructor_id and rec.instructor_id not in rec.attendee_ids:
                 raise ValidationError('Instructor must be in attendee list!')
 
+class AttendeesWizard(models.TransientModel):
+    _name = 'openacademy.attendees.wizard'
 
+    session_id = fields.Many2one('openacademy.session', string='Session')
+    partner_ids = fields.Many2many('res.partner', string='Attendees')
 
