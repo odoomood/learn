@@ -30,6 +30,7 @@
         'views/templates.xml',
         'views/menu.xml',
         'views/res_partner.xml',
+        'wizards/wizards.xml',
 
     ],
     # only loaded in demonstration mode

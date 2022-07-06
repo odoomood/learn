@@ -1,17 +1,18 @@
 <?xml version="1.0"?>
 <odoo>
-    <act_window id="action_list_courses"
-      name="Courses"
-      res_model="openacademy.course"
-      view_mode="tree,form"
-      context="{'search_default_my_courses': True}"
-    />
+    <record id="action_list_courses" model="ir.actions.act_window">
+        <field name="name">Courses"</field>
+        <field name="res_model">openacademy.course</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_my_courses': True}</field>
+    </record>
 
-    <act_window id="action_list_sessions"
-      name="Sessions"
-      res_model="openacademy.session"
-      view_mode="tree,form,calendar,graph,kanban"
-    />
+    <record id="action_list_sessions" model="ir.actions.act_window">
+        <field name="name">Sessions</field>
+        <field name="res_model">openacademy.session</field>
+        <field name="view_mode">tree,form,calendar,graph,kanban</field>
+    </record>
+
 
     <menuitem id="menu_root" name="Open Academy" />
     <menuitem id="menu_courses" parent="menu_root"
